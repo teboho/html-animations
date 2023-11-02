@@ -5,24 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Animations</title>
     <style>
-        #box {
-            width: 300px;
-            height: 300px;
-            /* Ideally should initialize those properties that I will animate in the keyframes.. */
-            background: red;
-            animation: mymove 5s 1;
+        body {
+            animation: bodybg-anim 5s;
+            background: grey;
+            
+        }
+        #myDIV {
+            width: 100px;
+            height: 100px;
+            /*I wanna try and have the properties that I animate initialised..*/
+            background: red; /*start color*/ 
+            /*transform: rotate(0deg);*/
+            animation: anim 5s 5;
+        }
+        #myDIV1 {
+            margin: 1em;
+            width: 100px;
+            height: 100px;
+            background: pink; /*start color*/ 
+            animation: anim1 5s 4;
+        }
+        #myDIV2 {
+            margin: 1em;
+            width: 100px;
+            height: 100px;
+            background: green; /*start color*/ 
+            animation: anim2 5s 3;
+        }
+        #myDIV3 {
+            margin: 1em;
+            width: 100px;
+            height: 100px;
+            background: grey; /*start color*/ 
+            animation: anim3 5s 5;
+            border: 1px solid;
+        }
+        #myDIV4 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            margin: 1em;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgb(172, 61, 61); /*start color*/ 
+            animation: anim4 5s 5;
+            border: 1px solid;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
         }
 
-        /* Animation keyframes */
-        @keyframes mymove {
-            0% { background: red; transform: rotateX(0deg) rotateY(0deg); }
-            100% { background: green; transform: rotateX(180deg) rotateY(360deg); }
+        @keyframes anim {
+            0% {background-color: red; transform: rotateX(0deg) rotateY(0deg);  } 
+            25% {background-color: orange; }  
+            50% {background-color: yellow; border-radius: 50%}
+            75% {background-color: blue; }
+            90% {background-color: indigo; }
+            100% {background-color: violet; transform: rotateX(180deg) rotateY(360deg); } 
+        }
+
+        @keyframes anim1 {
+            0% {background-color: pink; transform: skewX(0deg);  } 
+            100% {background-color: green; transform: skewX(180deg) translateX(150px); } 
+        }
+
+        @keyframes anim2 {
+            0% {background-color: green; transform: scaleX(1);  } 
+            100% {background-color: yellow; transform: scaleX(1.5) translateX(100px) rotateY(180deg); } 
+        }
+
+        @keyframes anim3 {
+            0% {background-color: green; transform: ;  } 
+            50% {background-color: red; transform: translate3d(100px,-500px, -100px); } 
+            100% {background-color: red; transform: rotateX(180deg); } 
+        }
+
+        @keyframes anim4 {
+            0% {background-color: red;  } 
+            33% {background-color: yellowgreen; transform: translateX(10em); } 
+            66% {background-color: indigo; transform: translate(10em, -10em); } 
+            100% {background-color: violet; transform: translate3d(15em, -15em, 5em); } 
+        }
+
+        @keyframes bodybg-anim {
+            0% {background: grey; } 
+            50% {background: white; } 
         }
     </style>
 </head>
 <body>
     <h1>Animation of html properties...</h1>
     <p>Gradually change the 'property' value from a to b</p>
-    <div id="box">hello world</div>
+    
+    <div id="myDIV">box 0</div>
+    <div id="myDIV1">box 1</div>
+    <div id="myDIV2">box 2</div>
+    <div id="myDIV3">box 3</div>
+    <div id="myDIV4">box 4</div>
 </body>
 </html>
