@@ -10,7 +10,7 @@
             background: grey;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
-        #myDIV {
+        #box {
             width: 100px;
             height: 100px;
             /*I wanna try and have the properties that I animate initialised..*/
@@ -18,21 +18,21 @@
             /*transform: rotate(0deg);*/
             animation: anim 5s 5;
         }
-        #myDIV1 {
+        #box1 {
             margin: 1em;
             width: 100px;
             height: 100px;
             background: pink; /*start color*/ 
             animation: anim1 5s 4;
         }
-        #myDIV2 {
+        #box2 {
             margin: 1em;
             width: 100px;
             height: 100px;
             background: green; /*start color*/ 
             animation: anim2 5s 3;
         }
-        #myDIV3 {
+        #box3 {
             margin: 1em;
             width: 100px;
             height: 100px;
@@ -40,7 +40,7 @@
             animation: anim3 5s 5;
             border: 1px solid;
         }
-        #myDIV4 {
+        #box4 {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-weight: bold;
             margin: 1em;
@@ -97,7 +97,7 @@
             transform: translateX(150px) translateY(-500px);
         } */
         svg {
-            transform: scale(0.5) translate(-150px, -900px);
+            transform: scale(0.60) translate(-100px, -900px);
         }
         .wheel {
             animation: rotate-wheel 5s infinite;
@@ -119,11 +119,11 @@
     </header>
     
     <main>    
-        <div id="myDIV">box 0</div>
-        <div id="myDIV1">box 1</div>
-        <div id="myDIV2">box 2</div>
-        <div id="myDIV3">box 3</div>
-        <div id="myDIV4">box 4</div>
+        <div id="box">box 0</div>
+        <div id="box1">box 1</div>
+        <div id="box2">box 2</div>
+        <div id="box3">box 3</div>
+        <div id="box4">box 4</div>
 
         <div id="svgs">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="568px" height="568px" viewBox="-0.5 -0.5 568 279" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2023-11-02T14:29:01.057Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0&quot; etag=&quot;hukCpErXj7lO73eLSkN9&quot; version=&quot;22.0.8&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Page-1&quot; id=&quot;OuCQqMElMCoQUALg5dXs&quot;&gt;7VrLctowFP0almEsyw+8zKvJpjOdYZF2lVGwMGqFRWQRTL++V7b8NoUwQEKSDfgeSVfSPUe6smCAr+fpnSSL2XcRUj6wrTAd4JuBbSPkBPClkXWOeM4oByLJQlOpAsbsLzWgZdAlC2nSqKiE4IotmuBExDGdqAZGpBSrZrWp4M1eFySiHWA8IbyLPrBQzXJ05FoVfk9ZNCt6RpYpmZOisgGSGQnFqgbh2wG+lkKo/GmeXlOug1fEJW/3bUNpOTBJY7VTgzTgD+vpxfjxzn78S/h9kDxfeLmXF8KXZsJmsGpdRAC8QLDBuFrNmKLjBZnokhXwDdhMzTlYCB5JssgZmLKUQqdXU8b52DgiSyUMdC24kADFItZeEyXFH9oLFhFHGKAFlWxOFZV6BCyOALcANhOgUtF0Y2RQGW8QKhXgRq6himkwMgwZiWIUDAOj0lXFOfLw0HdzeFanvIYTo7ao7KMiBB4MJ6/gBx2bn//GfXTa+Fp9wbWOFFl7h8jG4aXeQqrw1KIpxTIOdRgzFUIk5PqnNoZuYf6ql92kDWtdWClTtWZg/TL+9XPVSBtFmyZHuOSIhp2trMUQzE4s5YRuF5wiMqJqW70u4zU+3R46C0xSThR7aQ63j2LTww/BYCKloJDnDUd+Q1SODVBrFeaTNW3rO2PLHfhru8N+110ek467TH1lCPYXJD6SIBtyrNS5RZCoJsdKnF+C3CBIvytId39B9rh7A0Ei56CKbKokeIVK3m6baSYux7L247OdAUv7VEx+HfM0fe/5nOcfm6FTHPR2jvBJT3podKTMeu5HPX/X1Oq/5S7sHvaw572Lwx4KjqTJcz/tnYkmD3ve63H3BposLqoamvS40glEZMOdmBwC8PNS31sB9Rg/TaeBV4dqIi5A7eAiyW73LqFCsEizmlUbL9LfasYSPUz9UfT9JItSEmvfL9HAhglaQrKIxYRzTXso6SpjH8jXFlkNmSg8QDTyCeRuOgsNEp5qrq7ew0pPFiWcRTGYExA6BfxKp082IfzSFMxZGPJNKbu5hg+Qf3u2SlyTZW1t9GVgfLSrlr5brJwaVpGyXWnTqW87flc1JGZzWM0ik4di2YB+L5PMT5JsVEEJs4+vDCfobljoHSjjsLdw5/eK6R7qFbN99D71K6Z92Our82Ny6zv+2TD52a99yl/sCgKCPZnETsuRf2Im3U/OpINaBKA9mXRxy5F9YiZ3ucD70EwebHf1tkhibybBrH7Mz6tXf4nAt/8A&lt;/diagram&gt;&lt;/mxfile&gt;">
