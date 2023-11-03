@@ -139,12 +139,51 @@
                 width: 50vw;
             }
         }
+
+        @keyframes wiggle {
+            0% { transform: rotate(0deg) }
+            80% { transform: rotate(0deg) }
+            85% { transform: rotate(5deg) }
+            95% { transform: rotate(-5deg) }
+            1000% { transform: rotate(0deg) }
+        }
+
+        .wiggle {
+            color: rgb(23, 60, 61);
+            display: inline-block;
+            animation: wiggle 2.5s infinite;
+        }
+        
+        .shake:hover {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        @keyframes shake {
+            10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%, 80% {
+                transform: translate3d(2px, 1px, 3px);
+            }
+
+            30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%, 60% {
+                transform: translate3d(4px, 0, 5px);
+            }
+        }
     </style>
 </head>
 <body>
     <header>        
-        <h1>Animation of HTML content...</h1>
-        <p>It gradually changes the chosen property's value from [a] to [b] as it moves from keyframe to keyframe</p>
+        <h1><span class="wiggle shake">Animation</span> of HTML content...</h1>
+        <marquee><p>It gradually changes the chosen property's value from [a] to [b] as it moves from keyframe to keyframe</p></marquee>
     </header>
     <main>   
         <section class="svg-diagrams">
