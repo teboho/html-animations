@@ -10,6 +10,9 @@
             background: grey;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
+        header {
+            text-align: center;
+        }
         #box {
             width: 100px;
             height: 100px;
@@ -93,11 +96,8 @@
         }
 
         /* Animating SVGs.. */
-        /* #svgs {
-            transform: translateX(150px) translateY(-500px);
-        } */
-        svg {
-            transform: translate(-100px, -900px);
+        svg#bicycle {
+            transform: translateX(-100px);
             animation: move 5s infinite;
         }
         .wheel {
@@ -112,15 +112,30 @@
             100% { transform: translateX(500px);}
         }
 
-        header {
-            text-align: center;
+        .arms {
+            animation: wiggle-arms .5s infinite alternate-reverse;
         }
+        @keyframes wiggle-arms {
+            0% { transform: rotate(45deg); transform-origin: 50% 50%;}
+            100% { transform: rotate(-45deg); transform-origin: 50% 50%;}
+        }
+        svg#skeleton {
+            transform: translateX(200px);
+        }
+        
+        /* @keyframes smile-frown {
+            0% { transform: rotate(180deg) ; transform-box: fill-box; transform-origin: 50% 50%; opacity: 0;}
+            100% { transform: rotate(0deg); transform-box: fill-box; transform-origin: 50% 50%; opacity: 1;}
+        }
+        .mouth {
+            transform: rotate(180deg);
+            animation: smile-frown 1s infinite;
+        } */
 
         /* Smartphones (portrait) ----------- */
         @media only screen and (max-width : 400px) {
-            svg {
-                transform: scale(0.25) translate(-100px, -900px);
-                animation: move 5s infinite;
+            svg#bicycle {
+                width: 50vw;
             }
         }
     </style>
@@ -130,78 +145,105 @@
         <h1>Animation of HTML content...</h1>
         <p>It gradually changes the chosen property's value from [a] to [b] as it moves from keyframe to keyframe</p>
     </header>
-    
-    <main>    
-        
-        <div id="svgs">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="568px" height="568px" viewBox="-0.5 -0.5 568 279" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2023-11-02T14:29:01.057Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0&quot; etag=&quot;hukCpErXj7lO73eLSkN9&quot; version=&quot;22.0.8&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Page-1&quot; id=&quot;OuCQqMElMCoQUALg5dXs&quot;&gt;7VrLctowFP0almEsyw+8zKvJpjOdYZF2lVGwMGqFRWQRTL++V7b8NoUwQEKSDfgeSVfSPUe6smCAr+fpnSSL2XcRUj6wrTAd4JuBbSPkBPClkXWOeM4oByLJQlOpAsbsLzWgZdAlC2nSqKiE4IotmuBExDGdqAZGpBSrZrWp4M1eFySiHWA8IbyLPrBQzXJ05FoVfk9ZNCt6RpYpmZOisgGSGQnFqgbh2wG+lkKo/GmeXlOug1fEJW/3bUNpOTBJY7VTgzTgD+vpxfjxzn78S/h9kDxfeLmXF8KXZsJmsGpdRAC8QLDBuFrNmKLjBZnokhXwDdhMzTlYCB5JssgZmLKUQqdXU8b52DgiSyUMdC24kADFItZeEyXFH9oLFhFHGKAFlWxOFZV6BCyOALcANhOgUtF0Y2RQGW8QKhXgRq6himkwMgwZiWIUDAOj0lXFOfLw0HdzeFanvIYTo7ao7KMiBB4MJ6/gBx2bn//GfXTa+Fp9wbWOFFl7h8jG4aXeQqrw1KIpxTIOdRgzFUIk5PqnNoZuYf6ql92kDWtdWClTtWZg/TL+9XPVSBtFmyZHuOSIhp2trMUQzE4s5YRuF5wiMqJqW70u4zU+3R46C0xSThR7aQ63j2LTww/BYCKloJDnDUd+Q1SODVBrFeaTNW3rO2PLHfhru8N+110ek467TH1lCPYXJD6SIBtyrNS5RZCoJsdKnF+C3CBIvytId39B9rh7A0Ei56CKbKokeIVK3m6baSYux7L247OdAUv7VEx+HfM0fe/5nOcfm6FTHPR2jvBJT3podKTMeu5HPX/X1Oq/5S7sHvaw572Lwx4KjqTJcz/tnYkmD3ve63H3BposLqoamvS40glEZMOdmBwC8PNS31sB9Rg/TaeBV4dqIi5A7eAiyW73LqFCsEizmlUbL9LfasYSPUz9UfT9JItSEmvfL9HAhglaQrKIxYRzTXso6SpjH8jXFlkNmSg8QDTyCeRuOgsNEp5qrq7ew0pPFiWcRTGYExA6BfxKp082IfzSFMxZGPJNKbu5hg+Qf3u2SlyTZW1t9GVgfLSrlr5brJwaVpGyXWnTqW87flc1JGZzWM0ik4di2YB+L5PMT5JsVEEJs4+vDCfobljoHSjjsLdw5/eK6R7qFbN99D71K6Z92Our82Ny6zv+2TD52a99yl/sCgKCPZnETsuRf2Im3U/OpINaBKA9mXRxy5F9YiZ3ucD70EwebHf1tkhibybBrH7Mz6tXf4nAt/8A&lt;/diagram&gt;&lt;/mxfile&gt;">
-                <defs>
-                    <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);&#xa;</style>
-                </defs>
-                <g>
-                    
-                    <ellipse cx="85.88" cy="195.86" rx="81.875" ry="81.875" fill="none" stroke="none" pointer-events="all"/>
+    <main>   
+        <section class="svg-diagrams">
+            <div id="svg1">
+                <svg id="bicycle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="568px" height="279px" viewBox="-0.5 -0.5 568 279" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2023-11-02T14:29:01.057Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0&quot; etag=&quot;hukCpErXj7lO73eLSkN9&quot; version=&quot;22.0.8&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Page-1&quot; id=&quot;OuCQqMElMCoQUALg5dXs&quot;&gt;7VrLctowFP0almEsyw+8zKvJpjOdYZF2lVGwMGqFRWQRTL++V7b8NoUwQEKSDfgeSVfSPUe6smCAr+fpnSSL2XcRUj6wrTAd4JuBbSPkBPClkXWOeM4oByLJQlOpAsbsLzWgZdAlC2nSqKiE4IotmuBExDGdqAZGpBSrZrWp4M1eFySiHWA8IbyLPrBQzXJ05FoVfk9ZNCt6RpYpmZOisgGSGQnFqgbh2wG+lkKo/GmeXlOug1fEJW/3bUNpOTBJY7VTgzTgD+vpxfjxzn78S/h9kDxfeLmXF8KXZsJmsGpdRAC8QLDBuFrNmKLjBZnokhXwDdhMzTlYCB5JssgZmLKUQqdXU8b52DgiSyUMdC24kADFItZeEyXFH9oLFhFHGKAFlWxOFZV6BCyOALcANhOgUtF0Y2RQGW8QKhXgRq6himkwMgwZiWIUDAOj0lXFOfLw0HdzeFanvIYTo7ao7KMiBB4MJ6/gBx2bn//GfXTa+Fp9wbWOFFl7h8jG4aXeQqrw1KIpxTIOdRgzFUIk5PqnNoZuYf6ql92kDWtdWClTtWZg/TL+9XPVSBtFmyZHuOSIhp2trMUQzE4s5YRuF5wiMqJqW70u4zU+3R46C0xSThR7aQ63j2LTww/BYCKloJDnDUd+Q1SODVBrFeaTNW3rO2PLHfhru8N+110ek467TH1lCPYXJD6SIBtyrNS5RZCoJsdKnF+C3CBIvytId39B9rh7A0Ei56CKbKokeIVK3m6baSYux7L247OdAUv7VEx+HfM0fe/5nOcfm6FTHPR2jvBJT3podKTMeu5HPX/X1Oq/5S7sHvaw572Lwx4KjqTJcz/tnYkmD3ve63H3BposLqoamvS40glEZMOdmBwC8PNS31sB9Rg/TaeBV4dqIi5A7eAiyW73LqFCsEizmlUbL9LfasYSPUz9UfT9JItSEmvfL9HAhglaQrKIxYRzTXso6SpjH8jXFlkNmSg8QDTyCeRuOgsNEp5qrq7ew0pPFiWcRTGYExA6BfxKp082IfzSFMxZGPJNKbu5hg+Qf3u2SlyTZW1t9GVgfLSrlr5brJwaVpGyXWnTqW87flc1JGZzWM0ik4di2YB+L5PMT5JsVEEJs4+vDCfobljoHSjjsLdw5/eK6R7qFbN99D71K6Z92Our82Ny6zv+2TD52a99yl/sCgKCPZnETsuRf2Im3U/OpINaBKA9mXRxy5F9YiZ3ucD70EwebHf1tkhibybBrH7Mz6tXf4nAt/8A&lt;/diagram&gt;&lt;/mxfile&gt;">
+                    <defs>
+                        <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);&#xa;</style>
+                    </defs>
+                    <g>
+                        
+                        <ellipse cx="85.88" cy="195.86" rx="81.875" ry="81.875" fill="none" stroke="none" pointer-events="all"/>
 
-                    <!-- wheel 1 -->
-                    <g class="wheel">
-                        <ellipse cx="84" cy="193.98" rx="80" ry="80" fill="none" stroke="rgb(0, 0, 0)" stroke-width="8" pointer-events="all"/>
-                        <path d="M 84 273.98 L 84 113.98" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"/>
-                        <path d="M 164 193.98 L 4 193.98" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"/>
-                    </g>
-                    <path d="M 84 194 L 204 74" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-                    <ellipse cx="485.88" cy="195.86" rx="81.875" ry="81.875" fill="none" stroke="none" pointer-events="all"/>
-                    <!-- wheel 2 -->
-                    <g class="wheel">
-                        <ellipse cx="484" cy="193.98" rx="80" ry="80" fill="none" stroke="rgb(0, 0, 0)" stroke-width="8" pointer-events="all"/>
-                        <path d="M 484 273.98 L 484 113.98" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"/>
-                        <path d="M 564 193.98 L 404 193.98" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"/>
-                    </g>
-                    <rect x="490.87" y="150.85" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
-                    <g transform="translate(-0.5 -0.5)">
-                        <switch>
-                            <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
-                                <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 166px; margin-left: 492px;">
-                                    <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                                        <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                            <font style="font-size: 9px;" color="#3bff96">this is <br />an svg, originally drew with draw.io</font>
+                        <!-- wheel 1 -->
+                        <g class="wheel">
+                            <ellipse cx="84" cy="193.98" rx="80" ry="80" fill="none" stroke="rgb(0, 0, 0)" stroke-width="8" pointer-events="all"/>
+                            <path d="M 84 273.98 L 84 113.98" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"/>
+                            <path d="M 164 193.98 L 4 193.98" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"/>
+                        </g>
+                        <path d="M 84 194 L 204 74" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <ellipse cx="485.88" cy="195.86" rx="81.875" ry="81.875" fill="none" stroke="none" pointer-events="all"/>
+                        <!-- wheel 2 -->
+                        <g class="wheel">
+                            <ellipse cx="484" cy="193.98" rx="80" ry="80" fill="none" stroke="rgb(0, 0, 0)" stroke-width="8" pointer-events="all"/>
+                            <path d="M 484 273.98 L 484 113.98" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"/>
+                            <path d="M 564 193.98 L 404 193.98" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke"/>
+                        </g>
+                        <rect x="490.87" y="150.85" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
+                        <g transform="translate(-0.5 -0.5)">
+                            <switch>
+                                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 166px; margin-left: 492px;">
+                                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                                <font style="font-size: 9px;" color="#3bff96">this is <br />an svg, originally drew with draw.io</font>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </foreignObject>
-                            <text x="521" y="169" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">this is...</text>
-                        </switch>
-                    </g>
-                    <rect x="420.87" y="210.85" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
-                    <g transform="translate(-0.5 -0.5)">
-                        <switch>
-                            <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
-                                <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 226px; margin-left: 422px;">
-                                    <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                                        <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                            <i><font color="#ff7247">animation still just css</font></i>
+                                </foreignObject>
+                                <text x="521" y="169" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">this is...</text>
+                            </switch>
+                        </g>
+                        <rect x="420.87" y="210.85" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
+                        <g transform="translate(-0.5 -0.5)">
+                            <switch>
+                                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 226px; margin-left: 422px;">
+                                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                                <i><font color="#ff7247">animation still just css</font></i>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </foreignObject>
-                            <text x="451" y="229" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">animation...</text>
-                        </switch>
+                                </foreignObject>
+                                <text x="451" y="229" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">animation...</text>
+                            </switch>
+                        </g>
+                        
+                        <!-- frame -->
+                        <path d="M 484 194 L 404 74" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <path d="M 204 74 L 404 74" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <path d="M 144 84 L 264 64" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <path d="M 334 4 L 454 14" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <path d="M 404 74 L 384 4" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
                     </g>
-                    
-                    <!-- frame -->
-                    <path d="M 484 194 L 404 74" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-                    <path d="M 204 74 L 404 74" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-                    <path d="M 144 84 L 264 64" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-                    <path d="M 334 4 L 454 14" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-                    <path d="M 404 74 L 384 4" fill="none" stroke="rgb(0, 0, 0)" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-                </g>
-                <switch>
-                    <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
-                    <a transform="translate(0,-5)" xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank">
-                        <text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text>
-                    </a>
-                </switch>
-            </svg>
-        </div>
+                    <switch>
+                        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+                        <a transform="translate(0,-5)" xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank">
+                            <text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text>
+                        </a>
+                    </switch>
+                </svg>
+            </div>
+
+            <div id="svg2"> 
+                <!-- Skeleton -->
+                <svg id="skeleton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="122px" height="262px" viewBox="-0.5 -0.5 122 262" content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2023-11-03T11:03:24.675Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36&quot; etag=&quot;eZv4silyKNSHGHpxughS&quot; version=&quot;22.0.3&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Page-1&quot; id=&quot;dbkmGiQwoZZZRE4a0Bm3&quot;&gt;5VhNj9owEP01HBclcRLMkQLdSm0lVFS1ezSJSawmcWTMkvTX1yZ2Phx2SVewpeKCMs/jsf3ejJlkBOZp8chQHn+lIU5GjhUWI7AYOY7nW+JXAmUFAAdWQMRIWEF2A6zJb6xANS/akxDvOo6c0oSTvAsGNMtwwDsYYoweum5bmnRXzVGEe8A6QEkf/UFCHlco9KwG/4RJFOuVbUuNpEg7K2AXo5AeWhBYjsCcUcqrp7SY40Ryp3mp5n18YbTeGMMZHzIhWP/6RsrPGzd9eFwty6dt/n374FZRnlGyVwdWm+WlZkBEEWQL48MhJhyvcxTIkYOQW2AxTxNh2eJRhcKM4+LFPdr1yUXGYJpizkrhoiYA6FVTVLY4On0OLe4VFLdo125IqR3VkRtCxIPi5C/48Qbwk4UzmWjCymiGu5wwus9CLFewhCVYYOVPaYw9bT4pz6OxKNqei1JZ1Zo47KWqwauoDcQizM8J3ue/xa93gl+NMZwgTp672zhFulphRYnYYC2v63TlBaZuO7pnAVaz2rlsBDLzBDhGoIqHXqBjDtTHfnta+BdNi6Hy3opsrsn2UNnO6n9l2SZ3JRvwDbbdt8pmVpsZ6MqywbuWzZ1cqNp6ZXtl2aZ3JZtZJP+tbLrzfk032eQR0SR/QRucrOiOcEIzMbShnNNUqKUdZgmJ5ACnRrMouuFcBkuLSL43jDdoR4IxYoEcEyfksyw6rmaNXQDFHwWwoO/YENrQP/ZHYePged4UuPbEt+HUm0DnQr3oxOhF7X4vWnf77YSqwYt3o7Y9oKTesV139Uk1RfAURacYuhZBzo0R5N4aQZd9obn5S9np8g/M0hx8KQNDyOk7X8r39sZxhu5/r5swm283lXvzAQws/wA=&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/>
+                    <g>
+                        <!-- Head shape -->
+                        <ellipse cx="60" cy="80" rx="39.99999999999999" ry="29.999999999999996" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                        <!-- Chest back -->
+                        <path d="M 60 150 L 60 110" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <!-- Abdomen -->
+                        <path d="M 60 210 L 60 150" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <!-- Arms -->
+                        <path class="arms" d="M 0 130 L 120 130" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <!-- Left leg -->
+                        <path d="M 0 260 L 60 210" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <!-- Right leg -->
+                        <path d="M 120 260 L 60 210" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <!-- Face features -->
+                        <!-- Mouth -->
+                        <path class="mouth" d="M 78.88 96.3 C 67.35 101 54.48 101.23 42.79 96.94" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+                        <ellipse cx="40" cy="75" rx="4.999999999999999" ry="4.999999999999999" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                        <ellipse cx="80" cy="75" rx="4.999999999999999" ry="4.999999999999999" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                        <path d="M 55 90 L 65 80" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+                        <path d="M 55 80 L 65 80" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+                    </g>
+                </svg>
+            </div>
+        </section>
 
         <div id="box">box 0</div>
         <div id="box1">box 1</div>
