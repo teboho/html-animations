@@ -178,6 +178,64 @@
                 transform: translate3d(4px, 0, 5px);
             }
         }
+        .music-grid {
+            display: inline-grid;
+            height: 600px;
+            width: fit-content;
+            padding: 10px;
+            border: 1px dotted blue;
+            grid-template-columns: 10px 10px 10px 10px 10px 10px;
+            column-gap: 1em;
+            transform: scale(-1); /* flip */
+            margin-right: 2em;
+        }
+        .music-bar {
+            height: 500px;
+            background: cadetblue;
+        }
+        @keyframes muse-bar0 {
+            0% { height: 100px; }
+            60% { height: 500px; }
+        }
+        .bar0 {
+            animation: muse-bar0 1s infinite alternate-reverse;
+        }
+        @keyframes muse-bar1 {
+            0% { height: 100px; }
+            50% { height: 300px; }
+        }
+        .bar1 {
+            animation: muse-bar1 1s infinite alternate-reverse;
+        }
+        @keyframes muse-bar2 {
+            0% { height: 100px; }
+            100% { height: 500px; }
+        }
+        .bar2 {
+            animation: muse-bar2 1s infinite alternate-reverse;
+        }
+        @keyframes muse-bar3 {
+            0% { height: 10px; }
+            45% { height: 450px; }
+        }
+        .bar3 {
+            animation: muse-bar3 1s infinite alternate-reverse;
+        }
+        @keyframes muse-bar4 {
+            0% { height: 100px; }
+            45% { height: 45px; }
+        }
+        .bar4 {
+            animation: muse-bar4 1s infinite alternate-reverse;
+        }
+        @keyframes muse-bar5 {
+            0% { height: 100px; }
+            75% { height: 45px; }
+            100% {height: 345px;}
+        }
+        .bar5 {
+            animation: muse-bar5 1s infinite alternate-reverse;
+        }
     </style>
 </head>
 <body>
@@ -285,13 +343,28 @@
             </div>
         </section>
 
-        <div id="box">box 0</div>
-        <div id="box1">box 1</div>
-        <div id="box2">box 2</div>
-        <div id="box3">box 3</div>
-        <div id="box4">box 4</div>
+        <!-- <div class="randoms">
+            <div id="box">box 0</div>
+            <div id="box1">box 1</div>
+            <div id="box2">box 2</div>
+            <div id="box3">box 3</div>
+            <div id="box4">box 4</div>
+        </div> -->
     </main>
+    <section style="width: fit-content; margin-left: auto; margin-right: auto;">
 
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/w6iw3pp8Dsk?si=cnMVWnz1-pr76y9i&amp;start=96" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+
+        <div class="music-grid">
+            <div class="music-bar bar0"></div>
+            <div class="music-bar bar1"></div>
+            <div class="music-bar bar2"></div>
+            <div class="music-bar bar3"></div>
+            <div class="music-bar bar4"></div>
+            <div class="music-bar bar5"></div>
+        </div>
+
+    </section>
     <footer>
         <p> &copy 2023 </p>
     </footer>
